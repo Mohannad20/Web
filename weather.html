@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <style>
+        body{
+            /* background-color: #979797; */
+            background: linear-gradient(50deg, hsl(263, 100%, 50%), hsl(29, 100%, 50%));
+            font-family: Outfit;
+            margin: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        form{
+            margin: 3rem;
+        }
+        .input{
+            width: 20rem;
+            height: 2.5rem;
+            border: none;
+            border-radius: 7px;
+            padding-inline: 20px;
+            font-family: Outfit;
+            font-size: 1rem;
+            cursor: text;
+        }
+        .submit{
+            width: 10rem;
+            height: 2.5rem;
+            margin-inline-start: 20px;
+            cursor: pointer;
+            /* border: 1px black solid; */
+            border: none;
+            border-radius: 5px;
+            background-color: hsl(22, 100%, 39%);
+            font-family: Outfit;
+            font-size: 1rem;
+        }
+        .submit:hover{
+            /* background-color: hsl(16, 94%, 36%); */
+            color: white;
+            border-color: white;
+        }
+        .container{
+            width: 50rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+        }
+        .card{
+            width: 25rem;
+            border: 4px solid;
+            border-color: lineargrea;
+            border-image: linear-gradient(to bottom, red, rgba(0, 0, 0, 0)) 1 100%;
+            place-items: center;
+            padding: 2rem;
+            margin-top: rem;
+            /* background: linear-gradient(140deg, hsl(280, 100%, 50%), hsl(29, 100%, 50%)); */
+            display: grid;
+            /* place-items: center; */
+            /* border-radius: 20px; */
+            border-bottom: none;
+            border-top: none;
+            /* display: none; */
+            color: aliceblue;
+            
+        }
+        
+        .cityname{
+            font-size: 3rem;
+            margin-top: 0%;
+            margin-bottom: 5%;
+            -webkit-text-stroke: 2px black;
+        }
+        P{
+            font-size: 1.5rem;
+            margin-top: 0%;
+        }
+        
+        .tempdegree{
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-top: 0%;
+            margin-bottom: 3rem;
+            -webkit-text-stroke: 1px black;
+        }
+        .humidity{
+            font-size: 1.5rem;
+            /* -webkit-text-stroke: 1px black; */
+
+        }
+        .description{
+            font-size: 2rem;
+            font-style: italic;
+            font-weight: bolder;
+            margin-bottom: 0%;
+            margin-top: 1.5rem;
+            -webkit-text-stroke: 2px black;
+
+        }
+        .weatherEmoji{
+            font-size: 6.5rem;
+            margin-bottom: 0%;
+            /* -webkit-text-stroke: 1px black; */
+
+        }
+        .error{
+            font-size: 1.5rem;
+            /* -webkit-text-stroke: 0.1px white; */
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form class="cityinput">
+            <input type="text" name="city" class="input" placeholder="Enter City Name">
+            <input type="submit" name="submit" class="submit" value="Search">
+        </form>
+        <div class="card" >
+            <!-- <h1 class="cityname">Miami</h1>
+            <p class="tempdegree">18 &#8451;&#8457;&#8490;</p>
+            <p class="humidity">Humidity : 10%</p>
+            <p class="description">Clear Sky</p>
+            <p class="weatherEmoji">☀</p>
+            <div class="error">please enter a correct city name</div> -->
+        </div>
+    </div>
+
+    <script>
+        const city = document.querySelector('.cityinput input');
+        const card = document.querySelector(".card")
+        const form = document.querySelector(".cityinput")
+        const keyapi = "7cce9a307501f38ba62657ca3bd43f93"; 
+        console.log(keyapi);
+
+        form.addEventListener("submit", async e =>{
+            e.preventDefault();
+            let cityvalue = city.value;
+            if (cityvalue) {
+                try {
+                    const dataweather = await getdataweather(cityvalue);
+                    weatherinfo(dataweather)
+                } catch (error) {
+                    console.error(error);
+                    // displayerror(error)
+                    displayerror("Please write a readable city!")
+                    
+                }
+                
+            } else {
+                displayerror("Please enter a city name")
+            }
+        }
+        );
+
+        function weatherinfo(data) {
+            // const {name : cityn} = data
+            const city =  document.createElement("h1");
+            city.textContent = data.name;
+            city.classList.add("cityname");
+
+            const humidity=  document.createElement("p");
+            humidity.textContent = `Humidity : ${data.main.humidity} %`;
+            humidity.classList.add("humidity");
+
+            const temp =  document.createElement("p");
+            temp.textContent = `${(data.main.temp - 273.15).toFixed(1)} °C`;
+            temp.classList.add("tempdegree");
+
+            const description =  document.createElement("p");
+            description.textContent = data.weather[0].description;
+            description.classList.add("description");
+
+            const weatherEmoji =  document.createElement("p");
+            weatherEmoji.textContent = getEmoji(data.weather[0].id);
+            weatherEmoji.classList.add("weatherEmoji");
+
+            console.log(data);
+            console.log(data.weather[0].id);
+
+            
+
+            card.textContent = "";
+            card.appendChild(city);
+            card.appendChild(humidity);
+            card.appendChild(temp);
+            card.appendChild(description);
+            card.appendChild(weatherEmoji);
+
+        }
+
+        function getEmoji(id) {
+            
+            switch (true) {
+                case (id >= 200) && (id <= 232):
+                    return '⛈'
+                    break;
+                case (id >= 300) && (id <= 321):
+                    return '🌧'
+                    break;
+                case (id >= 500) && (id <= 531):
+                    return '🌧'
+                    break;
+                case (id >= 600) && (id <= 622):
+                    return '❄'
+                    break;
+                case (id >= 701) && (id <= 781):
+                    return '🌫'
+                    break;
+                case id === 800:
+                    return '☁'
+                    break;
+                case (id >= 801) && (id <= 804):
+                    return '☁'
+                    break;
+            
+                default:
+                    return '❔';
+            }
+        }
+
+        async function getdataweather(cityname) {
+            try {
+                const callApi = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=${keyapi}`); 
+
+                if (!callApi.ok) {
+                    displayerror('city name is wrong')
+                }
+                const data = await callApi.json();
+                
+                return data;
+
+            } catch (error) {
+                console.error(error);
+                displayerror(error)
+            }
+        };
+
+        function displayerror(error) {
+            const errordisplay = document.createElement("p")
+            errordisplay.textContent = error
+            errordisplay.classList.add("error")
+            
+            card.textContent = "";
+            card.style.display = 'grid'
+            card.appendChild(errordisplay)
+        }
+
+    </script>
+</body>
+</html>

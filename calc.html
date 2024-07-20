@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: hsl(0, 0%, 85%);
+
+        }
+        .container{
+            font-family: technor;            
+            background-color: rgb(109, 109, 109);
+            max-width: 450px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        #display{
+            width: 100%;
+            padding: 20px;
+            font-size: 3rem;
+            border: none;
+            text-align: left;
+            background-color: hsl(0, 0%, 61%);
+            color: white;
+        }
+        #keys{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 15px;
+            padding: 20px;            
+        }
+        button{
+            width: 80px;
+            height: 80px;
+            border: none;
+            border-radius: 100px;
+            font-size: 3.5rem;
+            background-color: black;
+            color: white;
+            text-align: center;
+            transition: 0.1s;
+        }
+        button:hover{
+            background-color: hsl(0, 0%, 61%);
+            color: black;
+
+        }
+        .btnsop{
+            background-color: hsl(32, 100%, 50%);
+            color: black;
+        }
+        .btnsop:hover{
+            background-color: hsl(32, 100%, 50%);
+            color: rgb(153, 153, 153);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input id="display" readonly>
+        <div id="keys">
+            <button onclick="calcDisplay('7')">7</button>
+            <button onclick="calcDisplay('8')">8</button>
+            <button onclick="calcDisplay('9')">9</button>
+            <button class="btnsop" onclick="calcDisplay('-')">-</button>
+            <button onclick="calcDisplay('4')">4</button>
+            <button onclick="calcDisplay('5')">5</button>
+            <button onclick="calcDisplay('6')">6</button>
+            <button class="btnsop" onclick="calcDisplay('*')">*</button>
+            <button onclick="calcDisplay('1')">1</button>
+            <button onclick="calcDisplay('2')">2</button>
+            <button onclick="calcDisplay('3')">3</button>
+            <button class="btnsop" onclick="calcDisplay('/')">/</button>
+            <button onclick="calcDisplay('0')">0</button>
+            <button onclick="calcDisplay('.')">.</button>
+            <button onclick="calc()">=</button>
+            <button class="btnsop" onclick="calcDisplay('+')">+</button>
+            <button class="btnsop" onclick="clearDisplay()">C</button>
+        </div>
+    </div>
+    <script>
+        const display = document.getElementById('display');
+
+        function calcDisplay(input) {
+            display.value += input;
+        }
+        function clearDisplay() {
+            display.value = "";
+            
+        }
+        function calc() {
+            try {
+                display.value = eval(display.value);
+            } catch (error) {
+                console.error(error)
+                display.value = 'error'
+            }
+
+        }
+    </script>
+</body>
+</html>

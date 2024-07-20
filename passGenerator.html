@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <style>
+        body {
+            font-family: technor medium;
+            background-color: #D1D5DB;
+            color: #1E3A8A;
+            text-align: center;
+        }
+        h1{
+            font-size: 3.5rem;
+            font-family: technor black;
+            letter-spacing: 5px;
+            -webkit-text-stroke: 0.5px #F97316;
+            padding: 10px;
+        }
+        #title{
+            font-size: 1.6rem;
+        }
+        #pass{
+            font-family: technor medium;
+            font-size: 1.5rem;
+            margin: 20px 10px;
+            border: 0.5px solid #1E3A8A;
+            padding: 10px 50px;
+            border-end-end-radius: 25px;
+            border-start-start-radius: 25px;
+            text-align: center;
+            color: #1E3A8A;
+            background-color: #D1D5DB;
+
+        }
+        #generatebtn{
+            font-family: technor medium;
+            font-size: 1.5rem;
+            margin: 20px 10px;
+            border: 1px #1E3A8A solid;
+            padding: 10px 50px;
+            border-radius: 25px;
+            cursor: pointer;
+            background-color: #F97316;
+            color: #1E3A8A;
+        }
+        #generatebtn:hover{
+            background-color: #1E3A8A;
+            color: #F97316;
+        }
+        #res{
+            font-family: technor medium;
+            font-size: 2rem;
+            margin: 70px 10px;
+            border: 1px #1E3A8A solid;
+            padding: 10px 50px;
+            border-radius: 25px;
+            cursor: pointer;
+            background-color: #D1D5DB;
+            color: #1E3A8A;
+            box-shadow: 5px 5px 25px #1E3A8A;
+        }
+        #res:hover{
+            background-color: #1E3A8A;
+            color: #F97316;
+
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Password Generator</h1>
+    <label for="pass" id="title">Generate a strong password</label><br>
+    <input type="text" name="pass" id="pass">
+    <input type="submit" value="generate" id="generatebtn"><br>
+    <input type="button" id="res" onclick="copy()" readonly value="ur password will be shown here">
+    
+    <script>
+        result = document.getElementById('res')
+        generatebtn = document.getElementById('generatebtn')
+        function passGen(length,includLowercase,includUppercase,isNumbers,iSymbols) {
+            const chrLowercase = 'abcdefghijklmnopqrstuvwxyz'; 
+            const chrUppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const numbers = '0123456789';
+            const symbols = '!@#$%^&*().,+-/';
+            
+            let chrs = ''
+            chrs += includLowercase ? chrLowercase: '' ;
+            chrs += includUppercase ? chrUppercase: '' ;
+            chrs += isNumbers ? numbers: '' ;
+            chrs += iSymbols ? symbols: '' ;
+            
+            if (length < 10) {
+                return result.value = `please provide a length that must be at least 10 characters`
+            }
+            let password = ''
+            for (let i = 0; i < length; i++) {
+                const random = Math.floor(Math.random() * chrs.length)
+                password += chrs[random]
+            }
+            return password
+            
+        }
+        generatebtn.onclick = function () {
+            passinput = document.getElementById('pass').value
+            if (isNaN(passinput)) {
+                return result.value = `please provide number not a text`
+
+            }
+            const length = passinput
+            const includLowercase = true;
+            const includUppercase = true;
+            const isNumbers = true;
+            const iSymbols = true;
+            const password = passGen(length,includLowercase,includUppercase,isNumbers,iSymbols)
+            result.value = password
+            console.log(password)
+        }
+
+        function copy() {
+            x=result.value
+            navigator.clipboard.writeText(x)
+            console.log(x)
+            alert('copied')
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stopWatch</title>
+    <style>
+        body{
+            margin: 0;
+            font-family: technor;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+            flex-direction: column;
+            animation: bgc 10s alternate infinite ease-in;
+            -webkit-text-stroke: grey 1px;
+        }
+        @keyframes bgc {
+            0%{
+                background-color: #000000;
+            }
+            25%{
+                background-color: #636363;
+            }
+            50%{
+                background-color: #F6F6F6;
+            }
+            75%{
+                background-color: #989898;
+            }
+            100%{
+                background-color: #636363;
+            }
+        }
+        #title{
+            font-size: 5rem;
+        }
+        .container{
+            text-align: center;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .btns button{
+            font-size: 2rem;
+            margin-top: 3rem;
+            float: left;
+            border: none;
+            cursor: pointer;
+            padding-inline: 5rem;
+            padding-block: 0.7rem;
+            background-color: whitesmoke;
+            color: black;
+            transition: 0.5s ease;
+        }
+        .btns button:hover{
+            background-color: black;
+            color: whitesmoke;
+
+        }
+        #startbtn{
+            border-top-left-radius: 35px;
+            border-bottom-left-radius: 35px;
+        }
+        #resetbtn{
+            border-top-right-radius: 35px;
+            border-bottom-right-radius: 35px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">stopWatch</h1>    
+    <div class="container">
+        <div class="display">
+            00:00:00:00
+        </div>
+        <div class="btns">
+            <button id="startbtn" onclick="start()">Start</button>
+            <button id="stopbtn" onclick="stop()">Stop</button>
+            <button id="resetbtn" onclick="reset()">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        const display = document.querySelector('.display');
+        timerid = null;
+        startTime = 0;
+        elapsedTime = 0;
+        isRuning = false;
+
+        function start() {
+            if (!isRuning) {
+                startTime = Date.now() - elapsedTime;
+                timerid = setInterval(update, 10);
+                isRuning = true;
+            }
+        }
+        function stop() {
+            if (isRuning) {
+                elapsedTime = Date.now() - startTime;
+                clearInterval(timerid);
+                isRuning = false;
+                
+            }     
+        }
+        function reset() {
+            clearInterval(timerid);
+            isRuning = false;
+            startTime = 0;
+            elapsedTime = 0;
+            display.textContent = `00:00:00:00`
+        }
+        function update() {
+            elapsedTime = Date.now() - startTime;
+
+            let hours = Math.floor(elapsedTime / (1000 * 60 * 60));
+            let minutes = Math.floor(elapsedTime / (1000 * 60) % 60);
+            let seconds = Math.floor(elapsedTime / 1000 % 60);
+            let miliseconds = Math.floor(elapsedTime % 1000 / 10);
+
+            hours = String(hours).padStart(2,0);
+            minutes = String(minutes).padStart(2,0);
+            seconds = String(seconds).padStart(2,0);
+            miliseconds = String(miliseconds).padStart(2,0);
+            display.textContent = `${hours}:${minutes}:${seconds}:${miliseconds}`;
+        }
+        console.log(currentTime);
+    </script>
+</body>
+</html>

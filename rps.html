@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock-paper-scissors</title>
+    <style>
+        body {
+            background-color: #d8d8d8;
+            font-family: Nippo;
+            display: flex;
+            flex-direction: column;
+            place-items: center;
+        }
+        .btns button{
+            font-size: 4rem;
+            margin: 1rem;
+            padding: 1rem;
+            width:  8rem;
+            background-color: #a8a8a8;
+            border-radius: 10%;
+        }
+        #player, #computer, #result{
+            font-size: 3rem;
+            color: #a8a8a8;
+            -webkit-text-stroke:black 1px;
+        }
+        .green{
+            color: green;
+        }
+        .red{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rock Paper Scissors</h1>
+    <div class="btns">
+        <button onclick="play('paper')">🖐</button>
+        <button onclick="play('rock')">✊</button>
+        <button onclick="play('scissors')">✌</button>
+    </div>
+
+    <div id="player">player : </div>
+    <div id="computer">computer : </div>
+    <div id="result"></div>
+    <script>
+        const player = document.getElementById('player');
+        const computer = document.getElementById('computer');
+        const result = document.getElementById('result');
+        const choices = ["paper", "rock", "scissors"];
+
+        function play(playerChoice) {
+            const computerChoice = choices[Math.floor(Math.random() * 3)]
+            console.log(computerChoice);
+            if (playerChoice == computerChoice) {
+                result.textContent = `it's a tie`
+            } else {
+                switch (playerChoice) {
+                    case 'rock':
+                        (computerChoice === 'scissors') ? result.textContent = `player wins` : result.textContent =`computer wins`;
+                        break;
+                    case 'scissors':
+                        (computerChoice === 'paper') ? result.textContent = `player wins` : result.textContent =`computer wins`;
+                        break;
+                    case 'paper':
+                        (computerChoice === 'rock') ? result.textContent = `player wins` : result.textContent =`computer wins`;
+                        break;
+                }
+            }
+            player.textContent =`player : ${playerChoice}`
+            computer.textContent =`computer : ${computerChoice}`
+            
+        }
+    </script>
+</body>
+</html>
