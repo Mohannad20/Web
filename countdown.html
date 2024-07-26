@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>simple countdown</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            font-family: Satoshi;
+        }
+        :root{
+            --main-color: #3A3A3A;
+            --second-color: #A9CBB7;
+            --third-color: #FFD700;
+        }
+        body{
+            background-image: linear-gradient(90deg, var(--main-color), var(--second-color));
+            display: flex;
+            flex-direction: column;
+            place-items: center;
+        }
+        h1{
+            font-size: 4rem;
+            color: var(--second-color);
+            text-transform: capitalize;
+            -webkit-text-stroke: 1px var(--main-color);
+            margin-bottom: 4rem;
+            margin-top: 4rem;
+        }
+        .countdown > input{
+            width: 7rem;
+            height: 2.5rem;
+            border-radius: 7px;
+            border: none;
+            text-align: center;
+            padding-inline: 10px;
+            margin-bottom: 3rem;
+            background-color: var(--main-color);
+            color: var(--third-color);
+        }
+        .btns > button{
+            width: 10rem;
+            height: 2rem;
+            border-radius: 7px;
+            border: none;
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            background-color: var(--second-color);
+            color: var(--main-color);
+            cursor: pointer;
+            margin-inline: 1rem;
+        }
+        button:hover{
+            background-color: var(--main-color);
+            color: var(--third-color);
+
+        }
+        h2{
+            margin-top: 6rem;
+            font-size: 6rem;
+            letter-spacing: 1rem;
+            color: var(--main-color);
+            -webkit-text-stroke: 0.5px var(--third-color);
+        }
+    </style>
+</head>
+<body>
+    <h1>enter a countdown</h1>
+    <div class="countdown">
+        <input type="number" placeholder="hours" id="hours" min="0">
+        <input type="number" placeholder="minutes" id="minutes" max="59" min="0">
+        <input type="number" placeholder="seconds" id="seconds" max="59" min="0">
+
+    </div>
+    <div class="btns">
+        
+        <button id="start">start</button>
+        <button id="reset">reset</button>
+    </div>
+    <h2 id="countdisplay"></h2>
+    <script>
+        const hoursinput = document.getElementById('hours'); 
+        const minutesinput = document.getElementById('minutes'); 
+        const secondsinput = document.getElementById('seconds'); 
+        const countdisplay = document.getElementById('countdisplay');
+        const startbtn = document.getElementById('start')
+        const resetbtn = document.getElementById('reset')
+        let countdoanId;
+        let remainingtime = 0;
+        let isRuning = false;
+        function intialcountdown() {
+            const hours = parseInt(hoursinput.value) || 0;
+            const minutes = parseInt(minutesinput.value) || 0;
+            const seconds = parseInt(secondsinput.value) || 0;
+            
+            remainingtime = (hours * 3600) + (minutes * 60) + seconds;
+        }
+        function updatecountdown() {
+            const hours = Math.floor(remainingtime / 3600);
+            const minutes = Math.floor((remainingtime % 3600) / 60);
+            const seconds = Math.floor(remainingtime % 60);
+
+            countdisplay.innerHTML = `${String(hours).padStart(2,'0')} : ${String(minutes).padStart(2,'0')} : ${String(seconds).padStart(2,'0')}`;
+
+            if (remainingtime <= 0) {
+                countdisplay.innerHTML = `Countdown is over`;
+                clearInterval(countdoanId);
+                isRuning = false;      
+            }
+        } 
+        function countdown(){
+            if (remainingtime > 0) {   
+                remainingtime--;
+                updatecountdown();
+            }            
+        }
+
+        startbtn.addEventListener('click', () => {
+            if (!isRuning) {
+                if (remainingtime === 0) {
+                    intialcountdown();
+                }                
+                countdoanId = setInterval(countdown,1000)
+                updatecountdown()
+                isRuning = true
+                startbtn.textContent = `stop`
+            }else{
+                clearInterval(countdoanId);
+                isRuning = false;
+                startbtn.textContent = `start`
+            }
+        })
+        resetbtn.addEventListener('click', () => {
+            remainingtime = 0;
+            clearInterval(countdoanId);
+            startbtn.textContent = `start`;
+            isRuning = false;
+            countdisplay.innerHTML = `00 : 00 : 00`
+        })
+    </script>
+</body>
+</html>
