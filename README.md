@@ -11,6 +11,20 @@ A simple and intuitive Weather app that fetches real-time weather data from a pu
 ### Screenshot
 ![image](https://github.com/user-attachments/assets/80ef013d-726e-4481-9204-aa74b5112116)
 
+## Countdown Timer
+### Overview
+This Countdown Timer application is built using HTML, CSS, and JavaScript. It allows users to set a countdown with hours, minutes, and seconds, providing a simple and efficient way to keep track of time. The app features intuitive controls for starting, stopping, and resetting the countdown.
+### Features
+- **Set Custom Countdown**: Users can input hours, minutes, and seconds to set a custom countdown duration.
+- **Start/Stop Functionality**: start and stop the countdown with dedicated buttons.
+- **Reset Button**: Quickly reset the countdown timer to the initial input values.
+- **Real-Time Display**: The countdown is displayed in real-time, updating every second.
+- **Responsive Design**: Ensures a consistent user experience across different devices and screen sizes.
+- **User-Friendly Interface**: Clean and straightforward interface for effortless use.
+### Screenshot
+![image](https://github.com/user-attachments/assets/98dbea24-357a-4226-b8e7-18f9a0047224)
+
+
 ## Dice Roller
 ### Overview
 This [file](https://github.com/Mohannad20/Web/blob/master/dice.html) contains a Dice Roller application built using HTML, CSS, and JavaScript. The app allows users to roll a specified number of dice and displays the results in both numerical and graphical formats. It's a handy tool for games and simulations where rolling multiple dice is required.
