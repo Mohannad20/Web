@@ -9,7 +9,8 @@ The New Year Countdown application is a sleek and visually appealing tool built 
 - **Real-Time Updates**: Automatically updates every second to ensure accurate countdown tracking.
 - **Responsive Design**: Ensures the countdown looks great on any device, whether it's a desktop, tablet, or mobile phone.
 ### Screenshot
-![alt text](image.png)
+![image](https://github.com/user-attachments/assets/01dc2d1e-fc7a-48c4-ab8a-c5da3d021ea8)
+
 
 ## Weather App
 ### Overview
