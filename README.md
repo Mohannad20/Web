@@ -1,5 +1,16 @@
 # Beginner Project Ideas
 
+## New Year Countdown
+### Overview
+The New Year Countdown application is a sleek and visually appealing tool built using HTML, CSS, and JavaScript. It counts down the days, hours, minutes, and seconds until the New Year, providing a dynamic and engaging way to track the time remaining until the celebration.
+### Features
+- **Dynamic Countdown**:  Continuously updates to show the remaining days, hours, minutes, and seconds until the New Year.
+- **Circular Progress Indicators**: Uses visually appealing circular progress bars to represent the passage of time.
+- **Real-Time Updates**: Automatically updates every second to ensure accurate countdown tracking.
+- **Responsive Design**: Ensures the countdown looks great on any device, whether it's a desktop, tablet, or mobile phone.
+### Screenshot
+![alt text](image.png)
+
 ## Weather App
 ### Overview
 A simple and intuitive Weather app that fetches real-time weather data from a public API and displays it to users. This app provides up-to-date weather information, including temperature, humidity, and conditions, for any location you choose.
