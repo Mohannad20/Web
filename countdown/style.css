@@ -1,0 +1,59 @@
+*{
+    box-sizing: border-box;
+    font-family: Satoshi;
+}
+:root{
+    --main-color: #3A3A3A;
+    --second-color: #A9CBB7;
+    --third-color: #FFD700;
+}
+body{
+    background-image: linear-gradient(90deg, var(--main-color), var(--second-color));
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+}
+h1{
+    font-size: 4rem;
+    color: var(--second-color);
+    text-transform: capitalize;
+    -webkit-text-stroke: 1px var(--main-color);
+    margin-bottom: 4rem;
+    margin-top: 4rem;
+}
+.countdown > input{
+    width: 7rem;
+    height: 2.5rem;
+    border-radius: 7px;
+    border: none;
+    text-align: center;
+    padding-inline: 10px;
+    margin-bottom: 3rem;
+    background-color: var(--main-color);
+    color: var(--third-color);
+}
+.btns > button{
+    width: 10rem;
+    height: 2rem;
+    border-radius: 7px;
+    border: none;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: var(--second-color);
+    color: var(--main-color);
+    cursor: pointer;
+    margin-inline: 1rem;
+}
+button:hover{
+    background-color: var(--main-color);
+    color: var(--third-color);
+
+}
+h2{
+    margin-top: 6rem;
+    font-size: 6rem;
+    letter-spacing: 1rem;
+    color: var(--main-color);
+    -webkit-text-stroke: 0.5px var(--third-color);
+}
