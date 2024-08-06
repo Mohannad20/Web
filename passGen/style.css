@@ -1,0 +1,61 @@
+body {
+    font-family: technor medium;
+    background-color: #D1D5DB;
+    color: #1E3A8A;
+    text-align: center;
+}
+h1{
+    font-size: 3.5rem;
+    font-family: technor black;
+    letter-spacing: 5px;
+    -webkit-text-stroke: 0.5px #F97316;
+    padding: 10px;
+}
+#title{
+    font-size: 1.6rem;
+}
+#pass{
+    font-family: technor medium;
+    font-size: 1.5rem;
+    margin: 20px 10px;
+    border: 0.5px solid #1E3A8A;
+    padding: 10px 50px;
+    border-end-end-radius: 25px;
+    border-start-start-radius: 25px;
+    text-align: center;
+    color: #1E3A8A;
+    background-color: #D1D5DB;
+
+}
+#generatebtn{
+    font-family: technor medium;
+    font-size: 1.5rem;
+    margin: 20px 10px;
+    border: 1px #1E3A8A solid;
+    padding: 10px 50px;
+    border-radius: 25px;
+    cursor: pointer;
+    background-color: #F97316;
+    color: #1E3A8A;
+}
+#generatebtn:hover{
+    background-color: #1E3A8A;
+    color: #F97316;
+}
+#res{
+    font-family: technor medium;
+    font-size: 2rem;
+    margin: 70px 10px;
+    border: 1px #1E3A8A solid;
+    padding: 10px 50px;
+    border-radius: 25px;
+    cursor: pointer;
+    background-color: #D1D5DB;
+    color: #1E3A8A;
+    box-shadow: 5px 5px 25px #1E3A8A;
+}
+#res:hover{
+    background-color: #1E3A8A;
+    color: #F97316;
+
+}
