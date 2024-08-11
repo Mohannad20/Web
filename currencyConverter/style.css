@@ -1,0 +1,162 @@
+body{
+    box-sizing: border-box;
+    font-family: satoshi;
+    background-color: aliceblue;
+}
+
+h1{
+    letter-spacing: 2px;
+    font-size: 2.6rem;
+    text-transform: capitalize;
+    position: relative;
+    padding-bottom: 1.5rem;
+    border-bottom: 0.2rem solid #19ac1d;
+    border-radius: 60%;
+    -webkit-text-stroke: 1px black;
+    color: #19ac1d;
+}
+.container{
+    width: 100%;
+    margin-top: 3rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    display: grid;
+    place-items: center;
+    /* grid-column: 1; */
+    grid-auto-flow: column;
+    justify-content: space-evenly;
+    align-items: start;
+}
+.container > form {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-evenly; */
+    margin-top: 5rem;
+    width: 25rem;
+    height: 25rem;
+    /* padding: 6rem 4rem; */
+    /* border: 1px solid black; */
+    padding-top: 2rem;
+}
+.container > form > .amount,.from,.to,.btn{
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin-inline: 2rem;
+    /* justify-content: space-around; */
+    width: 28rem;
+}
+label{
+    padding-bottom: 8px;
+}
+#amountError{
+    color: red;
+    font-size: 12px;
+    font-weight: 500;
+    padding-left: 1rem;
+}
+input, .list-box{
+    display: flex;
+    place-items: center;
+    /* text-align: center; */
+    padding-inline-start: 1rem ;
+    margin-bottom: 8px;
+    height: 2.3rem;
+    border: 0.5px solid rgb(180, 180, 180);
+    border-radius: 5px;
+    border: 0.5px solid #006b04;
+    font-family: satoshi;
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: aliceblue;
+}
+.list-box img{
+    max-width: 25px;
+    margin-right: 0.5rem;
+}
+.list-box select{
+    border: none;
+    outline: none;
+    height: 2rem;
+    border-radius: 5px;
+    /* border: 0.5px solid #006b04; */
+    font-family: satoshi;
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: aliceblue;
+    padding: 0 8rem 0 0.6rem;
+}
+
+.list-box option{
+    color: black;
+    font-family: satoshi;
+    font-weight: 600;
+    background-color: aliceblue;
+}
+
+form input:focus{
+    outline: 0.5px solid #006b04;
+    padding: 0 14px;
+}
+.container > form >.btn > input[type=submit]{
+    border: 0.5px solid #006b04;
+    cursor: pointer;
+    height: 3rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 5px;
+    /* width: 25rem; */
+
+    /* -webkit-text-stroke: 1px  solid #317233; */
+    background-color: #19ac1d;
+    color: aliceblue;
+    transition: color 0.5s ease, background-color 0.5s ease;
+}
+.container > form > .btn > input[type=submit]:hover{
+    color: #006b04;
+    background-color: #a1ffa6;
+    
+}
+.exchange{
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+    /* padding-left: 2.5rem; */
+}
+.exchange > #sAmount, #sTo{
+    font-size: 1.5rem;
+    /* margin-bottom: 2rem; */
+
+}
+.exchange > #convertFrom{
+    /* font-size: 1.5rem; */
+    margin-top: 4rem;
+}
+span{
+    color: #19ac1d;
+}
+i{
+    border: 1px solid black;
+    color: #19ac1d;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 500px;
+    padding: 0.9rem;
+    margin: 0.6rem 0rem;
+    transition: color 0.5s ease, background-color 0.5s ease;
+
+}
+i:hover{
+    border: 1px solid #19ac1d;
+    color: black;
+}
+select option {
+    height: 20px; /* Adjust as needed */
+}
+#priceTo, #priceFrom, #resultTo, #resultFrom{
+    color: black;
+}
