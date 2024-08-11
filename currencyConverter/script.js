@@ -16,14 +16,10 @@ const resultTo = document.getElementById("resultTo")
 const priceFrom = document.getElementById("priceFrom")
 const priceTo = document.getElementById("priceTo")
 
-const keyApi = `078d52e9af0c55d041157abd`; //https://app.exchangerate-api.com
-// console.log(`https://flagcdn.com/48x36/ua.png`);
+const keyApi = `078d52e9af0c55d041157abd`; //get your api key from https://app.exchangerate-api.com
 
 
 Object.entries(country_list).forEach(([key, value]) => {
-    let imgsrc = `https://flagcdn.com/48x36/${key.toLocaleLowerCase()}.png`;
-    // console.log(imgsrc);
-    
     let optionFrom = document.createElement('option')
     optionFrom.value = key;
 
@@ -82,7 +78,6 @@ convertBtn.addEventListener("click" , async e => {
         amountError.textContent = ``;
         resultFrom.textContent = amount.value
     }
-    // amount.value = '';
 
     let fromValue = from.value;
     let toValue = to.value;
@@ -117,7 +112,6 @@ convertBtn.addEventListener("click" , async e => {
         resultTo.textContent = `${r}`.length < 16 ? r : r.toFixed(8);
         // resultTo.textContent = r.toFixed(8);
         // resultTo.textContent = r;
-        // console.log(result[toCurrencyNameabb]);
 
         priceTo.textContent = await result[toCurrencyNameabb]
         const secondResponse = await fetch(`https://v6.exchangerate-api.com/v6/${keyApi}/latest/${toCurrencyNameabb}`); 
