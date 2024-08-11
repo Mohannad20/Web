@@ -19,8 +19,8 @@ The Currency Converter application is a simple and intuitive tool designed to co
 
 ### Screenshot
 ![1](https://github.com/user-attachments/assets/3f7de41e-bc0b-49a5-8ea7-a7a44cc4cc5c)
-![2](https://github.com/user-attachments/assets/3efb0922-ed7b-4b77-9bad-eb165a51c63b)
-![3](https://github.com/user-attachments/assets/dafcc52b-f8a3-4b53-bc80-6f10809d90f0)
+![2](https://github.com/user-attachments/assets/fb31e013-8aea-480a-9e88-e405dbbfcd84)
+![3](https://github.com/user-attachments/assets/d4c847ee-fe99-4f51-855f-d82cf8d05b70)
 
 
 ## New Year Countdown
