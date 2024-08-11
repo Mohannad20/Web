@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJo0V5C7FH/wEnEC0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACeBc/wViKf8DOxj/ABEHBgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACNhY+AjjWP8J5FT/CeZR/wnnTv8K5kz/AAgDAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEbS4UCOJb/wnjV/8J5VL/CedO/wnoSf8J6kX/CetC/wilOf8CMxU6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACOFb/wnjV/8ADQX/CedM/wEhDv8AEgf/Ce07/wnuOP8J7zb/A1Mj/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjiWP8AAwH/AAAA/wnqRf8IZCv/A1Ai/wnwMf8J8Sz/CfEr/wNFHf8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADQhtDABMI8AEsEmYJ60D/CMA4/wnwLv8J8if/CvMi/wiXJv8BMhX/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArjTP0J6kT/Ce07/wnvMf8J8if/CvQg/wz0H/8ADgb/ABMImwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAngUfsK50v/CupC/wruOP8K8C3/CfMj/wvjJf8AAAD/AAAAlAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK5VL/CuhL/weOL/8K7jf/AA8G/wASCP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACeVT/wmWNf8FWCX/Cu45/wNFHf8DTSD/AAAAAAvJLv8CSyD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnkVP8K5k7/AkAb/wrsPf8EWSX/BWss/wrzI/8L9B7/BFkm/wNGHY8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHmTxmCuVR/wroSv8K60L/Cu06/wnvMv8J8Sv/CfIn/wiWLv8CQRv/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeTOXIK5k7/CulI/wrrQf8J7Tv/Ce81/wnDM/QJ2jLuARsLYQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArnTv8CNBb/BFcl/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZ+NQ8IvUjUC8xH/wARB5QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/v8AAPx/AAD4HwAA8A8AAOAHAADgBwAA9AcAAPAHAADgDwAA4H8AAOBPAADgBwAA8AcAAPgPAAD8fwAA/H8AAA==" rel="icon" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1>currency converter</h1>
+                <div class="exchange">
+                    <div id="sAmount"><span id="resultFrom">5.00</span> <span class="currencyFrom">US Dollars</span> <br><i class="fa-solid fa-arrow-right-arrow-left" id="exchangeIcon"></i></div>
+                    <div id="sTo"><span id="resultTo">49.174674</span> <span class="currencyTo">Moroccan Dirhams</span></div>
+                    <div id="convertFrom">&#x2705; &ThickSpace;1 <span class="currencyFromabb">USD</span> = <span id="priceTo">9.83493</span> <span class="currencyToabb">MAD</span></div>
+                    <div id="convertTo">&#x2705; &ThickSpace;1 <span class="currencyToabb">MAD</span> = <span id="priceFrom">0.101678</span> <span class="currencyFromabb">USD</span></div>
+                </div >
+        </div>
+        <form action="">
+            <div class="amount">
+                <label for="amount">Amount</label>
+                <input type="text" id="amount" placeholder="5.00 $">
+                <span id="amountError"></span>
+            </div>
+            <div class="dropdown">
+                <div class="from">
+                    <label for="from">From</label>
+                    <!-- <input type="text" id="from" readonly placeholder="USD"> -->
+                    <div class="list-box">
+                        <img src="https://flagcdn.com/48x36/us.png " id="flagfrom" alt="us flag">
+                        <select name="" id="from">
+                            <option value="choose" selected disabled>choose a country</option>      
+                        </select>
+                    </div>
+                </div>
+
+                <div class="to">
+                    <label for="to">To</label>
+                <!-- <input type="text" id="to" readonly placeholder="EURO"> -->
+                <div class="list-box">
+                    <img src="https://flagcdn.com/48x36/eu.png " id="flagto" alt="ma flag">
+                    <select name="" id="to">
+                        <option value="choose" disabled selected>choose a country</option>
+                    </select>
+                </div>
+                </div>
+            </div>
+             <div class="btn">
+                 <input type="submit" value="Convert" id="convertBtn">
+                </div>
+        </form>
+    </div>
+    <script src="script.js" type="module"></script>
+</body>
+</html>
