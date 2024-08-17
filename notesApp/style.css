@@ -53,7 +53,7 @@ i:hover{
 }
 .navbar{
     position: absolute;
-    width: 200px;
+    width: 214px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -84,7 +84,7 @@ i:hover{
     font-family: var(--outfit-bold);
     /* font-weight: 700; */
     letter-spacing: 1px;
-    width: 174px;
+    width: 180px;
     height: 20px;
     /* border: 1px solid var(--accent-color); */
     border-radius: 5px;
@@ -95,7 +95,7 @@ i:hover{
     transition: color 0.3s,opacity 0.3s, background-color 0.3s;
 }
 .navContent > li:hover {
-    background-color: rgba(var(--secondary-text-rgb), 0.4); 
+    background-color: rgba(var(--secondary-text-rgb), 0.2); 
     color: var(--secondary-color);
 }
 
@@ -145,10 +145,23 @@ i[id='correctBtn']{
     display: none;
     /* justify-content: flex-end; */
 }
-::-webkit-scrollbar{
+i[class='fa-regular fa-trash-can']{
+    color: var(--secondary-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    padding: 5px ;
+    font-size: 0.6rem;
+    cursor: pointer;
+    transition: color 0.3s,opacity 0.3s, background-color 0.3s;
+    left: 12%;
+    position: fixed;
+    margin-left: 20px;
+    display: none;
+}
+/* ::-webkit-scrollbar{
     width: 10px;
     height: 10px;
-}
+} */
 ::-webkit-scrollbar-track{
     background-color: rgba(var(--secondary-text-rgb), 0.3); 
 }
@@ -183,3 +196,8 @@ i[id='correctBtn']{
     background-position: center;
 }
  */
+
+ img{
+    color: #FF6F61;
+    background-color: #008080;
+ }
