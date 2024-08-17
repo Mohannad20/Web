@@ -30,14 +30,15 @@ btn.onclick = function() {
 elements.forEach(element => {
     element.addEventListener("focus",function () {
         correctBtn.style.display = 'inline-block';
+
     })
 })
 correctBtn.addEventListener('click', ()=>{
-    // correctBtn.style.display = 'none'
     const noteTitle = title.value;
     const noteContent = content.value;
     addNoteToNav(noteTitle)
     addNoteToLocal(noteTitle,noteContent)
+    correctBtn.style.display = 'none'
 
 })
 
@@ -74,20 +75,49 @@ window.addEventListener('load',loadNoteToNav)
         
 //     });
 // });
-    navContent.addEventListener('click', (event) => {
-        const clickedItem = event.target;
-        
-        if (clickedItem.tagName === 'LI') {
-            console.log('note clicked');
-            let notes = JSON.parse(localStorage.getItem('notes')) || [];
-            const index = Array.from(navContent.children).indexOf(clickedItem);
-            let note = notes[index];
-            if (note) {
-                title.value = note.title;
-                content.value = note.content; // Update the textarea value
-            }
+navContent.addEventListener('click', (event) => {
+    const clickedItem = event.target;
+    
+    if (clickedItem.tagName === 'LI') {
+        console.log('note clicked');
+        let notes = JSON.parse(localStorage.getItem('notes')) || [];
+        const index = Array.from(navContent.children).indexOf(clickedItem);
+        let note = notes[index];
+        if (note) {
+            title.value = note.title;
+            content.value = note.content; // Update the textarea value
         }
-    });
+    }
+});
+navContent.addEventListener("mousemove", ()=>{
+
+    const navItems = navContent.querySelectorAll('li');
+    navItems.forEach(item =>{
+        if (!item.querySelector('.fa-trash-can')) {
+            
+            const deteleBtn = document.createElement('i');
+            deteleBtn.classList.add('fa-regular', 'fa-trash-can');
+            item.appendChild(deteleBtn)
+
+            item.addEventListener('mouseover', ()=>{
+                deteleBtn.style.display = 'inline-block'
+            })
+            item.addEventListener('mouseout', ()=>{
+                deteleBtn.style.display = 'none'
+            })
+            
+            deteleBtn.addEventListener("click", ()=>{
+                item.remove();
+                let notes = JSON.parse(localStorage.getItem('notes')) || [];
+                const index = Array.from(navContent.children).indexOf(item);
+                notes.splice(index,1);
+                localStorage.setItem('notes',JSON.stringify(notes));
+
+            })
+        }
+
+    })
+})
 btnAddN.addEventListener("click", ()=>{
     title.value =``;
     content.value =``;
