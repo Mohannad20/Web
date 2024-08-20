@@ -1,5 +1,38 @@
 # Project Ideas
 
+## Notes App 📝
+### Overview
+This is a simple and elegant Notes App that allows users to create, edit, and delete notes seamlessly. The app is designed with a clean and intuitive user interface, making it easy to manage your notes. Additionally, it supports a dark mode toggle for better accessibility and user preference.
+### Features
+- **Create Notes**: Users can create new notes by entering a title and content. Notes are instantly added to the list on the left-hand side.
+- **Edit Notes**: Users can edit existing notes by selecting them from the list. The title and content fields are populated with the selected note's details, allowing easy updates.
+- **Delete Notes**: A delete button appears next to each note when hovering over it, allowing users to remove notes they no longer need.
+- **Dark Mode**: Users can switch between dark and light modes using the toggle button on the top right corner.
+- **Persistent Storage**: All notes are stored in the browser's localStorage, ensuring that your notes are saved even when the page is refreshed or the browser is closed and reopened.
+### Technologies Used
+- **HTML**: The structure of the app is built using semantic HTML elements.
+- **CSS**: Custom styles are applied to give the app a modern and minimalistic look. The app also supports a dark mode feature.
+- **JavaScript**: Handles the functionality of creating, updating, deleting, and saving notes, as well as toggling dark mode.
+- **localStorage**: Used to persist notes data in the browser, ensuring that notes are not lost on page reload.
+### How It Works
+1. Dark Mode Toggle: The app starts in light mode by default. Users can toggle dark mode by clicking the moon icon in the top right corner. This applies the .dark-mode class to the body, changing the theme.
+2. Creating a Note:
+-Users enter the title and content of a new note.
+-Clicking the save button adds the note to the navigation list and stores it in localStorage.
+3. Editing a Note:
+- When a note is clicked from the list, its title and content are loaded into the input fields.
+T- he user can modify these fields and save the changes, updating the note in localStorage.
+4. Deleting a Note:
+- When hovering over a note in the list, a trash icon appears.
+- Clicking the trash icon removes the note from the list and deletes it from localStorage.
+5. Persistent Storage:
+- The app uses localStorage to save all notes locally in the browser.
+- On page load, the app retrieves notes from localStorage and populates the navigation list with them.
+### Screenshot
+![image](https://github.com/user-attachments/assets/69c67fd6-cf63-4ee9-98ab-24afc9703413)
+![image](https://github.com/user-attachments/assets/109e7753-58c4-4a0a-9316-93383a76c848)
+
+
 ## Currency Converter
 ### Overview
 The Currency Converter application is a simple and intuitive tool designed to convert amounts between different currencies. Built using HTML, CSS, and JavaScript, this app fetches the latest exchange rates and performs real-time currency conversions, making it easy for users to calculate currency values quickly and accurately.
