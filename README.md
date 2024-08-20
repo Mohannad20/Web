@@ -17,11 +17,11 @@ This is a simple and elegant Notes App that allows users to create, edit, and de
 ### How It Works
 1. Dark Mode Toggle: The app starts in light mode by default. Users can toggle dark mode by clicking the moon icon in the top right corner. This applies the .dark-mode class to the body, changing the theme.
 2. Creating a Note:
--Users enter the title and content of a new note.
--Clicking the save button adds the note to the navigation list and stores it in localStorage.
+- Users enter the title and content of a new note.
+- Clicking the save button adds the note to the navigation list and stores it in localStorage.
 3. Editing a Note:
 - When a note is clicked from the list, its title and content are loaded into the input fields.
-T- he user can modify these fields and save the changes, updating the note in localStorage.
+- The user can modify these fields and save the changes, updating the note in localStorage.
 4. Deleting a Note:
 - When hovering over a note in the list, a trash icon appears.
 - Clicking the trash icon removes the note from the list and deletes it from localStorage.
