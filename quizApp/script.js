@@ -1,3 +1,4 @@
+import { quizApp } from "./questions";
 document.addEventListener('DOMContentLoaded', ()=>{
     const btnDarkM = document.getElementById("btnDarkM");
 
