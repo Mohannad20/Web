@@ -1,5 +1,4 @@
-export const quizApp = {
-    subjects: {
+export let subjects = {
         sports: {
             questions: [
                 {
@@ -451,4 +450,4 @@ export const quizApp = {
             ]
         }
     }
-};
+;
