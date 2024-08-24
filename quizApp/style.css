@@ -105,6 +105,51 @@ i[id=leftAngle]{
     }
     
 }
+.containerA{
+    /* display: grid; */
+    place-items: center;
+    display: none;
+
+}
+.containerB{
+    display: flex;
+    place-items: center;
+}
+.containerB > button.display{
+    display: block;
+}
+.containerB > button{
+    display: none;
+    font-family: var(--nippo-light);
+    text-transform: capitalize;
+    font-size: 3rem;
+    width: 50rem;
+    height: 5rem;
+    background-color: var(--primary-bg);
+    color: var(--secondary-text);
+    border: 1px solid var(--accent-color);
+    /* border: none; */
+    border-radius: 0.4rem;
+    margin: 13rem 0rem;
+    /* padding: 3rem ; */
+    /* transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease; */
+    cursor: pointer;
+
+    &:hover{
+        color: var(--secondary-text); 
+        background-color: rgba(var(--secondary-text-rgb), 0.1);
+        /* transform: translateY(-2px); */
+    }
+    &:active{
+        transform: translateX(2px);
+    }
+    &:focus{
+        outline: 1px solid var(--secondary-text);
+        background-color: rgba(var(--accent-color-rgb), 0.3);
+
+    }
+    
+}
 .options{
     margin: 2.5rem 0px 0px 0px;
 }
