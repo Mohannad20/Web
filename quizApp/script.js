@@ -8,7 +8,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const options = document.querySelector(".options");
     const nextBtn = document.getElementById("rightAngle");
     const prevBtn = document.getElementById("leftAngle");
-    let index = 0;
+    const backBtn = document.getElementById("backBtn");
+
+    let index = Math.floor(Math.random() * 7);
+    let shuffledQuestions = [];
+    let currentIndexQuestion = 0;
 
     darkmBtn.addEventListener('click', ()=>{
         document.body.classList.toggle("dark-mode");
@@ -22,48 +26,105 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     const subjectBtns = document.querySelectorAll(".containerB button");
 
+    backBtn.addEventListener("click", () => {
+        containerA.style.display = 'none';
+        backBtn.style.display = 'none';
+        displayChildren(containerB); // Show all subject buttons
+        containerB.style.display = 'flex';
+    });
     subjectBtns.forEach(btn => {
         btn.addEventListener("click", () =>{
-            btn.style.display = 'none'
-            containerA.style.display = 'grid'
+            // btn.style.display = 'none'
+            // hiddenChildren(containerB)
+            // containerA.style.display = 'grid'
+            // backBtn.style.display = 'block'
+
+            containerB.style.display = 'none';
+            containerA.style.display = 'grid';
+            backBtn.style.display = 'block';
             
             const choosedBtn = btn.textContent;
             const selectedSubject = subjects[choosedBtn];
-            console.log(selectedSubject.questions[1]);
-            // selectedSubject.questions.forEach(quest => {
-                // console.log(quest);
-                Object.entries(selectedSubject.questions[0]).forEach(([key, value]) => {
-                    console.log(key);
-                    console.log(value);
+            // console.log(selectedSubject.questions[1]);
+            // const randomindex = Math.floor(Math.random() * 10)
+            // console.log(randomindex);
+            // console.log(selectedSubject.questions[randomindex]);
+            
+            // shuffle(selectedSubject.questions)
+            // console.log(selectedSubject.questions);
+            
+            if (selectedSubject) {
+                shuffledQuestions = shuffle(selectedSubject.questions);
+                console.log(shuffledQuestions);
+                
+                // const randomindex = Math.floor(Math.random() * shuffledQuestions.length)
+                // console.log(randomindex);
+                
 
-                    
-                    // console.log('question :',value.number);
-                    // console.log('question :',value.question);
-                    // console.log('question options :',value.options);
-                    // console.log('answer:',value.correctAnswer);
-                    // questionNbr.textContent = value.number;
-                    // question.textContent = value.question;
-                    // value.options.forEach(option => {
-                    //     const optionElement = document.createElement("button");
-                    //     optionElement.textContent = option;
-                    //     options.append(optionElement)
-                    // })
-                })
-                // for(s in (selectedSubject.questions)){
-                //     console.log(selectedSubject.questions[s]);
-                    
-                // }
-                
-                
-            // })
+                displayOptions(currentIndexQuestion, shuffledQuestions)
+            }
+            // console.log(selectedSubject.questions);
+
+
+            
         })
     })
+
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const randomIndex = Math.floor(Math.random() * (i + 1));
+            [array[i], array[randomIndex]] = [array[randomIndex], array[i]];
+        }
+        return array;
+    }
+
+    function displayOptions(index,  subject) {
+        const questionObj = subject[index];
+
+        // questionNbr.textContent = questionObj.number;
+        questionNbr.textContent = currentIndexQuestion+1;
+        question.textContent = questionObj.question;
+
+        options.innerHTML = ``;
+        questionObj.options.forEach(quest => {
+            const optionElement = document.createElement("button");
+            optionElement.textContent = quest;
+            options.append(optionElement)
+        })
+        
+    }
+
     nextBtn.addEventListener("click", () =>{
-        display(1)
+        // if (containerB.style.display === 'flex') {
+            
+            display(1)
+        // } else {
+            if (shuffledQuestions.length > 0) {
+                currentIndexQuestion = (currentIndexQuestion + 1) % shuffledQuestions.length;
+                displayOptions(currentIndexQuestion, shuffledQuestions)
+            }
+        // }
     })
     prevBtn.addEventListener("click", () =>{
-        display(-1)
+        // if (containerB.style.display === 'flex') {
+            display(-1)
+        // } else {
+            if (shuffledQuestions.length > 0) {
+                currentIndexQuestion = (currentIndexQuestion -1 + shuffledQuestions.length) % shuffledQuestions.length;
+                displayOptions(currentIndexQuestion, shuffledQuestions)
+            }
+        // }
     })
+    function hiddenChildren(container) {
+        Array.from(container.children).forEach(child => {
+            child.style.display = 'none'
+        })
+    }
+    function displayChildren(container) {
+        Array.from(container.children).forEach(child => {
+            child.style.display = 'block'
+        })
+    }
     if (subjectBtns.length > 0) {
         subjectBtns[index].classList.add('display');
     }
