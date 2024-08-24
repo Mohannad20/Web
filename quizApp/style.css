@@ -34,6 +34,10 @@ body{
     cursor: pointer;
     -webkit-text-stroke: 1.5px var(--accent-color);
     color: var(--primary-bg);
+    transition: color 0.3s ease-in;
+    &:hover{
+        color: rgba(var(--accent-color-rgb), 0.2);
+    }
 }
 #q{
     font-family: var(--nippo-medium);
@@ -64,6 +68,25 @@ i[id=btnDarkM]{
     padding: 7px 9px;
     cursor: pointer;
     color: var(--secondary-text);
+    transition: opacity 0.2s ease-in-out;
+    &:hover{
+        opacity: 0.6;
+    }
+}
+i[id=backBtn]{
+    top: 4%;
+    left: 3%;
+    position: fixed;
+    /* border: 1px solid var(--accent-color); */
+    /* border-radius: 50%; */
+    font-size: 0.7rem;
+    font-weight: 900;
+    padding: 7px 9px;
+    cursor: pointer;
+    color: var(--secondary-text);
+    transition: opacity 0.2s ease-out;
+    display: none;
+
     &:hover{
         opacity: 0.6;
     }
@@ -78,6 +101,8 @@ i[id=rightAngle]{
     padding: 7px 9px;
     cursor: pointer;
     color: var(--secondary-text);
+    transition: opacity 0.2s ease;
+
     &:hover{
         opacity: 0.7;
         /* transform: translateY(2px); */
@@ -96,6 +121,8 @@ i[id=leftAngle]{
     padding: 7px 9px;
     cursor: pointer;
     color: var(--secondary-text);
+    transition: opacity 0.2s ease;
+
     &:hover{
         opacity: 0.7;
         /* transform: translateY(2px); */
@@ -132,7 +159,7 @@ i[id=leftAngle]{
     border-radius: 0.4rem;
     margin: 13rem 0rem;
     /* padding: 3rem ; */
-    /* transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease; */
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
     cursor: pointer;
 
     &:hover{
