@@ -9,10 +9,16 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const nextBtn = document.getElementById("rightAngle");
     const prevBtn = document.getElementById("leftAngle");
     const backBtn = document.getElementById("backBtn");
+    const scoreCorrect = document.getElementById("scoreCorrect");
+    const scoreIncorrect = document.getElementById("scoreIncorrect");
+    const repeatBtn = document.getElementById("repeatBtn");
+    const containerC = document.querySelector(".containerC");
 
     let index = Math.floor(Math.random() * 7);
     let shuffledQuestions = [];
     let currentIndexQuestion = 0;
+    let counterCorrectAnswers = 0;
+    let counterIncorrectAnswers = 0;
 
     darkmBtn.addEventListener('click', ()=>{
         document.body.classList.toggle("dark-mode");
@@ -25,48 +31,21 @@ document.addEventListener('DOMContentLoaded', ()=>{
     })
 
     const subjectBtns = document.querySelectorAll(".containerB button");
-
-    backBtn.addEventListener("click", () => {
-        containerA.style.display = 'none';
-        backBtn.style.display = 'none';
-        displayChildren(containerB); // Show all subject buttons
-        containerB.style.display = 'flex';
-    });
     subjectBtns.forEach(btn => {
         btn.addEventListener("click", () =>{
-            // btn.style.display = 'none'
-            // hiddenChildren(containerB)
-            // containerA.style.display = 'grid'
-            // backBtn.style.display = 'block'
-
+            backBtn.style.display = 'block'
+            containerA.style.display = 'grid'
             containerB.style.display = 'none';
-            containerA.style.display = 'grid';
-            backBtn.style.display = 'block';
-            
+
             const choosedBtn = btn.textContent;
             const selectedSubject = subjects[choosedBtn];
-            // console.log(selectedSubject.questions[1]);
-            // const randomindex = Math.floor(Math.random() * 10)
-            // console.log(randomindex);
-            // console.log(selectedSubject.questions[randomindex]);
-            
-            // shuffle(selectedSubject.questions)
-            // console.log(selectedSubject.questions);
             
             if (selectedSubject) {
                 shuffledQuestions = shuffle(selectedSubject.questions);
+                currentIndexQuestion = 0;
                 console.log(shuffledQuestions);
-                
-                // const randomindex = Math.floor(Math.random() * shuffledQuestions.length)
-                // console.log(randomindex);
-                
-
                 displayOptions(currentIndexQuestion, shuffledQuestions)
             }
-            // console.log(selectedSubject.questions);
-
-
-            
         })
     })
 
@@ -77,54 +56,112 @@ document.addEventListener('DOMContentLoaded', ()=>{
         }
         return array;
     }
-
-    function displayOptions(index,  subject) {
+    
+    function displayOptions(index, subject) {
         const questionObj = subject[index];
-
-        // questionNbr.textContent = questionObj.number;
+        
         questionNbr.textContent = currentIndexQuestion+1;
         question.textContent = questionObj.question;
-
+        
         options.innerHTML = ``;
-        questionObj.options.forEach(quest => {
+        // console.log(questionObj.options);
+        const optionListShuffled = shuffle([...questionObj.options]);
+        console.log(optionListShuffled);
+        
+        
+        optionListShuffled.forEach(option => {
             const optionElement = document.createElement("button");
-            optionElement.textContent = quest;
+            optionElement.textContent = option;
             options.append(optionElement)
         })
-        
+
+        const answers = document.querySelectorAll(".options button")
+        answers.forEach(answer => {
+            answer.addEventListener("click", ()=>{
+                const choosedAnswer = answer.textContent;
+                console.log(choosedAnswer);
+                console.log(questionObj.correctAnswer);
+                console.log(currentIndexQuestion);
+
+                if (choosedAnswer === questionObj.correctAnswer) {
+                    answer.style.background = 'green'
+                    counterCorrectAnswers += 1
+                }else{
+                    answer.style.background = 'red'
+                    counterIncorrectAnswers += 1
+                }
+
+                scoreCorrect.textContent = counterCorrectAnswers;
+                scoreIncorrect.textContent = counterIncorrectAnswers;
+
+                if (currentIndexQuestion >= shuffledQuestions.length -1) {
+                    // finalScore();
+                    setTimeout(() => {
+                        containerDisplayer(containerA,containerC)
+                    }, 300)
+                }
+                
+                setTimeout(()=> {
+                    if (currentIndexQuestion < shuffledQuestions.length -1) {
+                        currentIndexQuestion +=1;
+                        displayOptions(currentIndexQuestion, subject);
+                    } else {
+                        containerDisplayer(containerA,containerC)
+                    }
+                },200)
+        })      
+        })
     }
 
+    function containerDisplayer(a,b) {
+        a.style.display = 'none'
+        b.style.display = 'flex'
+    }
+
+    repeatBtn.addEventListener("click", () =>{
+        setTimeout(() => {
+            containerDisplayer(containerC,containerB)
+        }, 500)
+        // containerC.style.display = 'none';
+        // containerB.style.display = 'flex';
+        currentIndexQuestion = 0;
+        counterCorrectAnswers = 0;
+        counterIncorrectAnswers = 0;
+
+    })
+
+    backBtn.addEventListener("click", () => {
+        containerA.style.display = 'none';
+        backBtn.style.display = 'none';
+        containerB.style.display = 'flex';
+        currentIndexQuestion = 0;
+        console.log(currentIndexQuestion);
+    });
+    
     nextBtn.addEventListener("click", () =>{
-        // if (containerB.style.display === 'flex') {
-            
             display(1)
-        // } else {
             if (shuffledQuestions.length > 0) {
                 currentIndexQuestion = (currentIndexQuestion + 1) % shuffledQuestions.length;
                 displayOptions(currentIndexQuestion, shuffledQuestions)
             }
-        // }
     })
     prevBtn.addEventListener("click", () =>{
-        // if (containerB.style.display === 'flex') {
             display(-1)
-        // } else {
             if (shuffledQuestions.length > 0) {
                 currentIndexQuestion = (currentIndexQuestion -1 + shuffledQuestions.length) % shuffledQuestions.length;
                 displayOptions(currentIndexQuestion, shuffledQuestions)
             }
-        // }
     })
-    function hiddenChildren(container) {
-        Array.from(container.children).forEach(child => {
-            child.style.display = 'none'
-        })
-    }
-    function displayChildren(container) {
-        Array.from(container.children).forEach(child => {
-            child.style.display = 'block'
-        })
-    }
+    // function hiddenChildren(container) {
+    //     Array.from(container.children).forEach(child => {
+    //         child.style.display = 'none'
+    //     })
+    // }
+    // function displayChildren(container) {
+    //     Array.from(container.children).forEach(child => {
+    //         child.style.display = 'block'
+    //     })
+    // }
     if (subjectBtns.length > 0) {
         subjectBtns[index].classList.add('display');
     }
@@ -132,8 +169,5 @@ document.addEventListener('DOMContentLoaded', ()=>{
         subjectBtns[index].classList.remove('display')
         index = (subjectBtns.length + index + direction) % subjectBtns.length;
         subjectBtns[index].classList.add('display')
-    }
-
-
-    
+    }    
 })

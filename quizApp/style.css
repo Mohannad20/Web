@@ -91,6 +91,24 @@ i[id=backBtn]{
         opacity: 0.6;
     }
 }
+i[id=repeatBtn]{
+    top: 60%;
+    right: 42%;
+    position: fixed;
+    /* text-align: center; */
+    /* border: 1px solid var(--accent-color); */
+    /* border-radius: 50%; */
+    font-size: 1rem;
+    font-weight: 900;
+    /* padding: 7px 9px; */
+    cursor: pointer;
+    color: var(--secondary-text);
+    transition: opacity 0.2s ease-out;
+
+    &:hover{
+        opacity: 0.6;
+    }
+}
 i[id=rightAngle]{
     top: 50%;
     right: 3%;
@@ -175,7 +193,28 @@ i[id=leftAngle]{
         background-color: rgba(var(--accent-color-rgb), 0.3);
 
     }
-    
+}
+.containerC{
+    /* display: flex; */
+    display: none;
+    flex-direction: row;
+    margin-top: 4rem;
+}
+.containerC >div > h2[id=correct],p[id="scoreCorrect"]{
+    font-size: 2.5rem;
+    font-family: var(--nippo-bold);
+    color: var(--secondary-text);
+    padding: 0 2rem;
+}
+.containerC >div{
+    text-align: center;
+}
+.containerC >div> h2[id=incorrect],p[id="scoreIncorrect"]{
+    font-size: 2.5rem;
+    font-family: var(--nippo-bold);
+    color: var(--accent-color);
+    padding: 0 2rem;
+
 }
 .options{
     margin: 2.5rem 0px 0px 0px;
