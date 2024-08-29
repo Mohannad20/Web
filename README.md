@@ -1,5 +1,23 @@
 # Project Ideas
 
+
+## QuizApp
+### Overview
+QuizApp is a dynamic and interactive quiz application designed to test your knowledge across various subjects. Whether you're studying for exams, brushing up on trivia, or just looking to challenge yourself, QuizApp offers a fun and engaging way to learn.
+### Features
+- **Multiple Subjects**: Choose from a variety of subjects to quiz yourself on different topics.
+- **Randomized Questions**: Each quiz session shuffles questions to ensure a unique experience every time.
+- **Answer Feedback**: Instantly see if your answer is correct or incorrect, with a visual cue.
+- **Dark Mode**: Toggle dark mode for a comfortable experience during late-night study sessions.
+- **Responsive Design**: Optimized for both desktop and mobile use, so you can take your quiz anywhere.
+### How It Works
+1. Select a subject from the available options.
+2. Answer the shuffled questions, and get immediate feedback on your choices.
+3. After completing the quiz, view your final score and choose to start a new round or switch subjects.
+### Screenshot
+![quiz1](https://github.com/user-attachments/assets/1ecedb08-d2b7-46a9-b28f-7ad1f373bbc3)
+
+
 ## Notes App 📝
 ### Overview
 This is a simple and elegant Notes App that allows users to create, edit, and delete notes seamlessly. The app is designed with a clean and intuitive user interface, making it easy to manage your notes. Additionally, it supports a dark mode toggle for better accessibility and user preference.
