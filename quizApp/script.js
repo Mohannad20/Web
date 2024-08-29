@@ -64,10 +64,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         question.textContent = questionObj.question;
         
         options.innerHTML = ``;
-        // console.log(questionObj.options);
         const optionListShuffled = shuffle([...questionObj.options]);
-        console.log(optionListShuffled);
-        
         
         optionListShuffled.forEach(option => {
             const optionElement = document.createElement("button");
@@ -75,19 +72,21 @@ document.addEventListener('DOMContentLoaded', ()=>{
             options.append(optionElement)
         })
 
-        const answers = document.querySelectorAll(".options button")
-        answers.forEach(answer => {
-            answer.addEventListener("click", ()=>{
-                const choosedAnswer = answer.textContent;
+        const answerBtns = document.querySelectorAll(".options button")
+        answerBtns.forEach(answerBtn => {
+            answerBtn.addEventListener("click", ()=>{
+                const choosedAnswer = answerBtn.textContent;
                 console.log(choosedAnswer);
                 console.log(questionObj.correctAnswer);
                 console.log(currentIndexQuestion);
 
+                options.querySelectorAll("button").forEach(btn => btn.disabled = true)
+
                 if (choosedAnswer === questionObj.correctAnswer) {
-                    answer.style.background = 'green'
+                    answerBtn.style.background = 'green'
                     counterCorrectAnswers += 1
                 }else{
-                    answer.style.background = 'red'
+                    answerBtn.style.background = 'red'
                     counterIncorrectAnswers += 1
                 }
 
@@ -95,9 +94,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 scoreIncorrect.textContent = counterIncorrectAnswers;
 
                 if (currentIndexQuestion >= shuffledQuestions.length -1) {
-                    // finalScore();
                     setTimeout(() => {
-                        containerDisplayer(containerA,containerC)
+                        containerDisplayer(containerA,containerC),
+                        backBtn.style.display = 'none'
                     }, 300)
                 }
                 
@@ -113,21 +112,18 @@ document.addEventListener('DOMContentLoaded', ()=>{
         })
     }
 
-    function containerDisplayer(a,b) {
-        a.style.display = 'none'
-        b.style.display = 'flex'
+    function containerDisplayer(hideContainer,showContainer) {
+        hideContainer.style.display = 'none'
+        showContainer.style.display = 'flex'
     }
 
     repeatBtn.addEventListener("click", () =>{
         setTimeout(() => {
             containerDisplayer(containerC,containerB)
-        }, 500)
-        // containerC.style.display = 'none';
-        // containerB.style.display = 'flex';
+        }, 400)
         currentIndexQuestion = 0;
         counterCorrectAnswers = 0;
         counterIncorrectAnswers = 0;
-
     })
 
     backBtn.addEventListener("click", () => {
@@ -140,28 +136,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
     
     nextBtn.addEventListener("click", () =>{
             display(1)
-            if (shuffledQuestions.length > 0) {
-                currentIndexQuestion = (currentIndexQuestion + 1) % shuffledQuestions.length;
-                displayOptions(currentIndexQuestion, shuffledQuestions)
-            }
     })
     prevBtn.addEventListener("click", () =>{
             display(-1)
-            if (shuffledQuestions.length > 0) {
-                currentIndexQuestion = (currentIndexQuestion -1 + shuffledQuestions.length) % shuffledQuestions.length;
-                displayOptions(currentIndexQuestion, shuffledQuestions)
-            }
     })
-    // function hiddenChildren(container) {
-    //     Array.from(container.children).forEach(child => {
-    //         child.style.display = 'none'
-    //     })
-    // }
-    // function displayChildren(container) {
-    //     Array.from(container.children).forEach(child => {
-    //         child.style.display = 'block'
-    //     })
-    // }
+
     if (subjectBtns.length > 0) {
         subjectBtns[index].classList.add('display');
     }
